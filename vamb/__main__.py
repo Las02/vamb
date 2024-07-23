@@ -1072,7 +1072,6 @@ def cluster_and_write_files(
     base_clusters_name: str,  # e.g. /foo/bar/vae -> /foo/bar/vae_unsplit.tsv
     fasta_output: Optional[FastaOutput],
 ):
-    print("LASSE:", cluster_options)
     begintime = time.time()
     # Create cluser iterator
     logger.info("Clustering")
@@ -1613,6 +1612,17 @@ def add_help_arguments(parser: argparse.ArgumentParser):
 def add_general_arguments(subparser: argparse.ArgumentParser):
     add_help_arguments(subparser)
     reqos = subparser.add_argument_group(title="Output", description=None)
+
+    reqos.add_argument(
+        "-Ltest",
+        dest="TEST",
+        metavar="",
+        type=int,
+        default=100,
+        required=True,
+        help=argparse.SUPPRESS,
+    )
+
     reqos.add_argument(
         "--outdir",
         metavar="",
@@ -1849,21 +1859,21 @@ def add_vae_arguments(subparser):
     return subparser
 
 
-def add_lasse_argumets(subparser):
-    # Train predictor arguments
-    pred_trainos = subparser.add_argument_group(
-        title="Arguments for various benchmarking", description=None
-    )
-    pred_trainos.add_argument(
-        "-Ltest",
-        dest="TEST",
-        metavar="",
-        type=int,
-        default=100,
-        required=True,
-        help=argparse.SUPPRESS,
-    )
-    return subparser
+# def add_lasse_argumets(subparser):
+#     # Train predictor arguments
+#     pred_trainos = subparser.add_argument_group(
+#         title="Arguments for various benchmarking", description=None
+#     )
+#     pred_trainos.add_argument(
+#         "-Ltest",
+#         dest="TEST",
+#         metavar="",
+#         type=int,
+#         default=100,
+#         required=True,
+#         help=argparse.SUPPRESS,
+#     )
+#     return subparser
 
 
 def add_predictor_arguments(subparser):
@@ -2135,7 +2145,7 @@ def main():
     add_bin_output_arguments(vae_parser)
     add_vae_arguments(vae_parser)
     add_clustering_arguments(vae_parser)
-    add_lasse_argumets(vae_parser)
+    # add_lasse_argumets(vae_parser)
 
     vaevae_parser = subparsers_model.add_parser(
         TAXVAMB,
