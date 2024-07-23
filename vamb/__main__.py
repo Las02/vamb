@@ -1848,6 +1848,22 @@ def add_vae_arguments(subparser):
     return subparser
 
 
+def add_lasse_argumets(subparser):
+    # Train predictor arguments
+    pred_trainos = subparser.add_argument_group(
+        title="Arguments for various benchmarking", description=None
+    )
+    pred_trainos.add_argument(
+        "-Ltest",
+        dest="TEST",
+        metavar="",
+        type=int,
+        default=100,
+        help=argparse.SUPPRESS,
+    )
+    return subparser
+
+
 def add_predictor_arguments(subparser):
     # Train predictor arguments
     pred_trainos = subparser.add_argument_group(
@@ -1923,7 +1939,7 @@ def add_clustering_arguments(subparser):
         dest="max_clusters",
         metavar="",
         type=int,
-        default=None, # meaning: do not stop
+        default=None,  # meaning: do not stop
         help=argparse.SUPPRESS,
     )
 
@@ -2171,6 +2187,7 @@ def main():
     add_abundance_arguments(predict_parser)
     add_taxonomy_arguments(predict_parser, taxonomy_only=True)
     add_predictor_arguments(predict_parser)
+    add_lasse_argumets(predict_parser)
 
     recluster_parser = subparsers.add_parser(
         RECLUSTER,
