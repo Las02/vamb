@@ -2231,6 +2231,7 @@ def main():
             sys.exit(1)
         if model == VAMB:
             opt = BinDefaultOptions.from_args(args)
+            print("OPT", opt)
             runner = partial(run_bin_default, opt)
             run(runner, opt.common.general)
         elif model == TAXVAMB:
