@@ -1072,6 +1072,7 @@ def cluster_and_write_files(
     base_clusters_name: str,  # e.g. /foo/bar/vae -> /foo/bar/vae_unsplit.tsv
     fasta_output: Optional[FastaOutput],
 ):
+    print("LASSE:", cluster_options)
     begintime = time.time()
     # Create cluser iterator
     logger.info("Clustering")
