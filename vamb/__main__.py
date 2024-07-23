@@ -1859,6 +1859,7 @@ def add_lasse_argumets(subparser):
         metavar="",
         type=int,
         default=100,
+        required=True,
         help=argparse.SUPPRESS,
     )
     return subparser
