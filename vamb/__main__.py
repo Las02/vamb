@@ -2133,6 +2133,7 @@ def main():
     add_bin_output_arguments(vae_parser)
     add_vae_arguments(vae_parser)
     add_clustering_arguments(vae_parser)
+    add_lasse_argumets(vae_parser)
 
     vaevae_parser = subparsers_model.add_parser(
         TAXVAMB,
@@ -2187,7 +2188,6 @@ def main():
     add_abundance_arguments(predict_parser)
     add_taxonomy_arguments(predict_parser, taxonomy_only=True)
     add_predictor_arguments(predict_parser)
-    add_lasse_argumets(predict_parser)
 
     recluster_parser = subparsers.add_parser(
         RECLUSTER,
