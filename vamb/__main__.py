@@ -2207,6 +2207,7 @@ def main():
     add_taxonomy_arguments(recluster_parser)
 
     args = parser.parse_args()
+    print("ARGS", args)
 
     if args.subcommand == TAXOMETER:
         opt = TaxometerOptions.from_args(args)
